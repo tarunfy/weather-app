@@ -49,7 +49,6 @@ function Main() {
 
   const StarterhandleDataReq = () => {
     const firstInputElement = document.getElementById("first-location-input");
-
     setLocationName(firstInputElement.value);
     axios
       .get(
