@@ -1,0 +1,134 @@
+#container {
+  background-color: white;
+  height: 85%;
+  width: 22%;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+}
+#location-name-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#location-name {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+#location-name-country {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  margin-left: 2px;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#get-btn {
+  font-size: 1.7rem;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  border-radius: 0.3rem;
+  color: #111;
+  cursor: pointer;
+  margin-left: 0.3rem;
+  padding-top: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* input[type="text"]:focus {
+  outline: none !important;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+  background-color: transparent;
+} */
+#location-input:focus {
+  outline: none !important;
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+  background-color: transparent;
+}
+
+#location-input {
+  text-align: center;
+  font-size: 1rem;
+  border: 0.1px solid grey;
+  border-radius: 5px;
+  padding: 0.6rem;
+  font-family: "Roboto", sans-serif;
+}
+
+#input-location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.first-logo .location-svg {
+  height: 300px;
+  width: 300px;
+}
+
+#first-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#first-input-location {
+  margin-bottom: 2rem;
+}
+
+#first-location-input {
+  font-size: 1.2rem;
+  text-align: center;
+  border: 0.1px solid grey;
+  border-radius: 5px;
+  padding: 0.6rem;
+  font-family: "Roboto", sans-serif;
+}
+
+#first-location-input:focus {
+  outline: none !important;
+  /* box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px; */
+  background-color: transparent;
+}
+
+#first-get-btn {
+  font-size: 1.7rem;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  border-radius: 0.3rem;
+  color: #111;
+  cursor: pointer;
+  margin-left: 0.3rem;
+  padding-top: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 50%;
+  margin: 0.5rem 0rem;
+}
