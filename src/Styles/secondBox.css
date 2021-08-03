@@ -1,0 +1,30 @@
+#second-container {
+  width: 95%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.wind {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.second-container-heading {
+  color: rgb(201, 192, 192);
+  font-family: "Lato", sans-serif;
+  margin-bottom: 8px;
+}
+
+.second-container-para {
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+}

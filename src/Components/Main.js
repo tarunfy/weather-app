@@ -6,6 +6,7 @@ import { ReactComponent as SVG2 } from "../images/img.svg";
 import { ReactComponent as SVG3 } from "../images/404.svg";
 import { FiSearch } from "react-icons/fi";
 import FirstBox from "./FirstBox";
+import SecondBox from "./SecondBox";
 
 function Main() {
   const APIkey = "b37cfd76d9484e06bc9170453210108";
@@ -23,6 +24,9 @@ function Main() {
   const [feelsLike, setFeelsLike] = useState("");
   const [temp, setTemp] = useState("");
   const [isDay, setIsDay] = useState("");
+  const [wind, setWind] = useState("");
+  const [humidity, setHumidity] = useState("");
+  const [visibility, setVisibility] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -47,6 +51,9 @@ function Main() {
         setFeelsLike(res.data.current.feelslike_c);
         setTemp(res.data.current.temp_c);
         setIsDay(res.data.current.is_day);
+        setWind(res.data.current.wind_mph);
+        setHumidity(res.data.current.humidity);
+        setVisibility(res.data.current.vis_km);
       })
       .catch((err) => {
         setSearchImg(false);
@@ -75,6 +82,7 @@ function Main() {
             temp={temp}
             isDay={isDay}
           />
+          <SecondBox wind={wind} humidity={humidity} visibility={visibility} />
         </div>
       ) : (
         console.log("rip error")
