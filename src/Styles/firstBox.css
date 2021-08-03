@@ -7,11 +7,11 @@
   color: white;
   font-family: "Lato", sans-serif;
   justify-content: space-around;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   padding: 0.5rem 0rem;
   position: relative;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  box-shadow: rgba(33, 35, 38, 0.5) 0px 10px 10px -10px;
 }
 
 .weather-image {
