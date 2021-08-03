@@ -46,6 +46,15 @@
   margin-bottom: 0.2rem;
 }
 
+@media (max-width: 500px) {
+  .temp h1 {
+    font-size: 3.5rem;
+  }
+  .temp {
+    padding-top: 1rem;
+  }
+}
+
 .bg-img {
   z-index: 0;
   opacity: 0.1;

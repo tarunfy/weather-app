@@ -19,6 +19,10 @@ function Main() {
   const [searchImg, setSearchImg] = useState(false);
   const [errorImg, setErrorImg] = useState(false);
   const [weatherIcon, setWeatherIcon] = useState("");
+  const [weatherText, setWeatherText] = useState("");
+  const [feelsLike, setFeelsLike] = useState("");
+  const [temp, setTemp] = useState("");
+  const [isDay, setIsDay] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -39,6 +43,10 @@ function Main() {
         setLocationName(res.data.location.name);
         setSearchImg(false);
         setWeatherIcon(res.data.current.condition.icon);
+        setWeatherText(res.data.current.condition.text);
+        setFeelsLike(res.data.current.feelslike_c);
+        setTemp(res.data.current.temp_c);
+        setIsDay(res.data.current.is_day);
       })
       .catch((err) => {
         setSearchImg(false);
@@ -60,7 +68,13 @@ function Main() {
             <h3 id="location-name">{`${locationName},`}</h3>
             <span id="location-name-country">{`${locationNameCountry}`}</span>
           </div>
-          <FirstBox weatherIcon={weatherIcon} />
+          <FirstBox
+            weatherIcon={weatherIcon}
+            weatherText={weatherText}
+            feelsLike={feelsLike}
+            temp={temp}
+            isDay={isDay}
+          />
         </div>
       ) : (
         console.log("rip error")
