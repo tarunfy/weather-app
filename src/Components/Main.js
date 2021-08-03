@@ -1,87 +1,69 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/main.css";
 import axios from "axios";
-import svg, { ReactComponent as SVG } from "../images/ball-triangle.svg";
-import svgg, { ReactComponent as SVG2 } from "../images/img.svg";
+import { ReactComponent as SVG } from "../images/ball-triangle.svg";
+import { ReactComponent as SVG2 } from "../images/img.svg";
+import { ReactComponent as SVG3 } from "../images/404.svg";
 import { FiSearch } from "react-icons/fi";
+import FirstBox from "./FirstBox";
 
 function Main() {
   const APIkey = "b37cfd76d9484e06bc9170453210108";
 
   // States:
   const [locationData, setLocationData] = useState({});
+  const [location, setLocation] = useState("");
   const [showLoader, setShowLoader] = useState(true);
   const [locationName, setLocationName] = useState("");
   const [locationNameCountry, setLocationNameCountry] = useState("");
   const [searchImg, setSearchImg] = useState(false);
+  const [errorImg, setErrorImg] = useState(false);
+  const [weatherIcon, setWeatherIcon] = useState("");
 
   useEffect(() => {
-    axios
-      .get(
-        `http://api.weatherapi.com/v1/current.json?key= b37cfd76d9484e06bc9170453210108&q=Noida&aqi=yes`
-      )
-      .then((res) => {
-        setTimeout(() => {
-          setShowLoader(false);
-          setSearchImg(true);
-        }, 2000);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    setTimeout(() => {
+      setShowLoader(false);
+      setSearchImg(true);
+    }, 2000);
   }, []);
 
   // Functions:
-  const handleDataReq = () => {
+
+  const StarterhandleDataReq = () => {
     axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key= b37cfd76d9484e06bc9170453210108&q=${locationName}&aqi=yes`
+        `http://api.weatherapi.com/v1/current.json?key= b37cfd76d9484e06bc9170453210108&q=${location}&aqi=yes`
       )
       .then((res) => {
-        setLocationName(res.data.location.name);
         setLocationNameCountry(res.data.location.country);
-        setLocationData(res.data);
-        console.log(locationName);
-        console.log(locationNameCountry);
-        console.log(locationData);
+        setLocationName(res.data.location.name);
+        setSearchImg(false);
+        setWeatherIcon(res.data.current.condition.icon);
+      })
+      .catch((err) => {
+        setSearchImg(false);
+        setErrorImg(true);
+        setShowLoader(false);
       });
   };
 
-  const StarterhandleDataReq = () => {
-    const firstInputElement = document.getElementById("first-location-input");
-    setLocationName(firstInputElement.value);
-    axios
-      .get(
-        `http://api.weatherapi.com/v1/current.json?key= b37cfd76d9484e06bc9170453210108&q=${locationName}&aqi=yes`
-      )
-      .then((res) => {
-        setLocationNameCountry(res.data.location.country);
-        setSearchImg(false);
-      });
+  const handleErrorClick = () => {
+    setErrorImg(false);
+    setSearchImg(true);
   };
 
   return (
     <div id="container">
-      {!showLoader && !searchImg ? (
+      {!showLoader && !searchImg && !errorImg ? (
         <div id="content">
           <div id="location-name-container">
             <h3 id="location-name">{`${locationName},`}</h3>
             <span id="location-name-country">{`${locationNameCountry}`}</span>
           </div>
-          <div id="input-location">
-            <input
-              type="text"
-              id="location-input"
-              placeholder="Enter location"
-              autoComplete="off"
-            />
-            <button id="get-btn" className="btn" onClick={handleDataReq}>
-              <FiSearch />
-            </button>
-          </div>
+          <FirstBox weatherIcon={weatherIcon} />
         </div>
       ) : (
-        console.log("gg")
+        console.log("rip error")
       )}
       {showLoader && (
         <div className="logo">
@@ -90,23 +72,36 @@ function Main() {
       )}
       {searchImg && (
         <div id="first-page">
-          <input
-            type="text"
-            id="first-location-input"
-            placeholder="Enter location"
-            autoComplete="off"
-          />
+          <div className="searcher">
+            <input
+              type="text"
+              id="first-location-input"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="Enter location"
+              autoComplete="off"
+            />
 
-          <button
-            id="first-get-btn"
-            className="btn"
-            onClick={StarterhandleDataReq}
-          >
-            <FiSearch />
-          </button>
+            <button
+              id="first-get-btn"
+              className="btn"
+              onClick={StarterhandleDataReq}
+            >
+              <FiSearch />
+            </button>
+          </div>
           <div className="first-logo">
             <SVG2 className="location-svg" />
           </div>
+        </div>
+      )}
+      {errorImg && (
+        <div id="error-page">
+          <SVG3 className="error-svg" />
+          <p className="error-mssg">Oops! Something went wrong</p>
+          <button className="error-btn" onClick={handleErrorClick}>
+            Go Home
+          </button>
         </div>
       )}
     </div>
