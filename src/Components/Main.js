@@ -8,6 +8,7 @@ import { FiSearch } from "react-icons/fi";
 import FirstBox from "./FirstBox";
 import SecondBox from "./SecondBox";
 import ThirdBox from "./ThirdBox";
+import FourthBox from "./FourthBox";
 
 function Main() {
   const APIkey = "b37cfd76d9484e06bc9170453210108";
@@ -30,6 +31,13 @@ function Main() {
   const [visibility, setVisibility] = useState("");
   const [sunrise, setSunrise] = useState("");
   const [sunset, setSunset] = useState("");
+  const [todayRainChance, setTodayRainChance] = useState("");
+  const [tomorrowRainChance, setTomorrowRainChance] = useState("");
+  const [airQuality, setAirQuality] = useState("");
+  const [todayMaxTemp, setTodayMaxTemp] = useState("");
+  const [tomorrowMaxTemp, setTomorrowMaxTemp] = useState("");
+  const [todayMinTemp, setTodayMinTemp] = useState("");
+  const [tomorrowMinTemp, setTomorrowMinTemp] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,7 +51,7 @@ function Main() {
   const StarterhandleDataReq = () => {
     axios
       .get(
-        `http://api.weatherapi.com/v1/forecast.json?key= b37cfd76d9484e06bc9170453210108&q=${location}&days=1&aqi=yes&alerts=no`
+        `http://api.weatherapi.com/v1/forecast.json?key= b37cfd76d9484e06bc9170453210108&q=${location}&days=5&aqi=yes&alerts=no`
       )
       .then((res) => {
         setLocationNameCountry(res.data.location.country);
@@ -59,6 +67,16 @@ function Main() {
         setVisibility(res.data.current.vis_km);
         setSunrise(res.data.forecast.forecastday[0].astro.sunrise);
         setSunset(res.data.forecast.forecastday[0].astro.sunset);
+        setTodayRainChance(
+          res.data.forecast.forecastday[0].day.daily_chance_of_rain
+        );
+        setTomorrowRainChance(
+          res.data.forecast.forecastday[1].day.daily_chance_of_rain
+        );
+        setTodayMaxTemp(res.data.forecast.forecastday[0].day.maxtemp_c);
+        setTomorrowMaxTemp(res.data.forecast.forecastday[1].day.maxtemp_c);
+        setTodayMinTemp(res.data.forecast.forecastday[0].day.mintemp_c);
+        setTomorrowMinTemp(res.data.forecast.forecastday[1].day.mintemp_c);
       })
       .catch((err) => {
         setSearchImg(false);
@@ -88,6 +106,15 @@ function Main() {
             isDay={isDay}
           />
           <SecondBox wind={wind} humidity={humidity} visibility={visibility} />
+
+          <FourthBox
+            todayRainChance={todayRainChance}
+            tomorrowRainChance={tomorrowRainChance}
+            todayMaxTemp={todayMaxTemp}
+            tomorrowMaxTemp={tomorrowMaxTemp}
+            todayMinTemp={todayMinTemp}
+            tomorrowMinTemp={tomorrowMinTemp}
+          />
           <button id="forecast">5-day forecast</button>
           <ThirdBox sunrise={sunrise} sunset={sunset} />
         </div>

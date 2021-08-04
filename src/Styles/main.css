@@ -209,7 +209,7 @@
   border-radius: 2rem;
   border: none;
   color: white;
-  background-color: #6c63ff;
+  background-color: #111;
   font-family: "Lato", sans-serif;
   cursor: pointer;
   transition: all 0.5s ease 0s;
@@ -218,5 +218,5 @@
 
 #forecast:hover {
   background: white;
-  color: #6c63ff;
+  color: #111;
 }

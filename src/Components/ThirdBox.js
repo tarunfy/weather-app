@@ -10,7 +10,6 @@ function ThirdBox({ sunrise, sunset }) {
       </div>
       <div className="sunset">
         <FiSunset className="icon" />
-
         <h4>{sunset}</h4>
       </div>
     </div>
