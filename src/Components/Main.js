@@ -7,6 +7,7 @@ import { ReactComponent as SVG3 } from "../images/404.svg";
 import { FiSearch } from "react-icons/fi";
 import FirstBox from "./FirstBox";
 import SecondBox from "./SecondBox";
+import ThirdBox from "./ThirdBox";
 
 function Main() {
   const APIkey = "b37cfd76d9484e06bc9170453210108";
@@ -27,6 +28,8 @@ function Main() {
   const [wind, setWind] = useState("");
   const [humidity, setHumidity] = useState("");
   const [visibility, setVisibility] = useState("");
+  const [sunrise, setSunrise] = useState("");
+  const [sunset, setSunset] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -40,7 +43,7 @@ function Main() {
   const StarterhandleDataReq = () => {
     axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key= b37cfd76d9484e06bc9170453210108&q=${location}&aqi=yes`
+        `http://api.weatherapi.com/v1/forecast.json?key= b37cfd76d9484e06bc9170453210108&q=${location}&days=1&aqi=yes&alerts=no`
       )
       .then((res) => {
         setLocationNameCountry(res.data.location.country);
@@ -54,6 +57,8 @@ function Main() {
         setWind(res.data.current.wind_mph);
         setHumidity(res.data.current.humidity);
         setVisibility(res.data.current.vis_km);
+        setSunrise(res.data.forecast.forecastday[0].astro.sunrise);
+        setSunset(res.data.forecast.forecastday[0].astro.sunset);
       })
       .catch((err) => {
         setSearchImg(false);
@@ -83,6 +88,8 @@ function Main() {
             isDay={isDay}
           />
           <SecondBox wind={wind} humidity={humidity} visibility={visibility} />
+          <button id="forecast">5-day forecast</button>
+          <ThirdBox sunrise={sunrise} sunset={sunset} />
         </div>
       ) : (
         console.log("rip error")

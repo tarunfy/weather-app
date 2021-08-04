@@ -9,7 +9,6 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 0.5rem;
 }
 #location-name-container {
   display: flex;
@@ -39,9 +38,13 @@
 
 #content {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 1.5rem 0.5rem;
 }
 
 /* #get-btn {
@@ -153,6 +156,9 @@
     height: 100%;
     border-radius: 0;
   }
+  #content {
+    border-radius: 0rem;
+  }
 }
 
 #error-page {
@@ -193,4 +199,24 @@
   font-weight: 600;
   font-family: "Lato", sans-serif;
   text-align: center;
+}
+
+#forecast {
+  width: 85%;
+  margin: 1rem 0rem;
+  font-size: 1.5rem;
+  padding: 0.7rem 0rem;
+  border-radius: 2rem;
+  border: none;
+  color: white;
+  background-color: #6c63ff;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+  transition: all 0.5s ease 0s;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#forecast:hover {
+  background: white;
+  color: #6c63ff;
 }
