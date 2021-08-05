@@ -1,0 +1,21 @@
+#fifth-container {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.air-quality {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.air-quality h2 {
+  font-family: "Lato", sans-serif;
+  margin-left: 2px;
+}
+
+#index-value {
+  color: #111;
+}

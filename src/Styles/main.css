@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
 #container {
   background-color: white;
   height: 85%;
@@ -17,12 +19,12 @@
 }
 
 #location-name {
-  font-family: "Roboto", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 800;
 }
 
 #location-name-country {
-  font-family: "Roboto", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 1.2rem;
   margin-left: 2px;
   font-weight: 500;
@@ -45,6 +47,7 @@
   width: 100%;
   border-radius: 1rem;
   padding: 1.5rem 0.5rem;
+  position: relative;
 }
 
 /* #get-btn {
@@ -201,7 +204,7 @@
   text-align: center;
 }
 
-#forecast {
+/*#forecast {
   width: 85%;
   margin: 1rem 0rem;
   font-size: 1.5rem;
@@ -210,13 +213,52 @@
   border: none;
   color: white;
   background-color: #111;
-  font-family: "Lato", sans-serif;
+  font-family: "Nunito", sans-serif;
   cursor: pointer;
   transition: all 0.5s ease 0s;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
+  font-weight: bold;
+}*/
 
-#forecast:hover {
+/*#forecast:hover {
   background: white;
   color: #111;
+}*/
+
+.Home {
+  margin-left: 2rem;
+  font-size: 2.2rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.footer-text {
+  font-family: "Roboto", sans-serif;
+  margin: 0.5rem 0rem;
+  font-size: 1.4rem;
+}
+
+#name {
+  font-family: "Montserrat", sans-serif;
+}
+
+#footer {
+  border-top: 0.5px solid grey;
+  margin: 1rem 0rem;
+  width: 100%;
+  /*background-color: red;*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0rem;
+}
+
+.social {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-left: 0.6rem;
 }

@@ -9,6 +9,10 @@ import FirstBox from "./FirstBox";
 import SecondBox from "./SecondBox";
 import ThirdBox from "./ThirdBox";
 import FourthBox from "./FourthBox";
+import FifthBox from "./FifthBox";
+import { HiHome } from "react-icons/hi";
+import { FiInstagram, FiTwitter, FiGithub } from "react-icons/fi";
+import { ImGithub } from "react-icons/im";
 
 function Main() {
   const APIkey = "b37cfd76d9484e06bc9170453210108";
@@ -77,6 +81,7 @@ function Main() {
         setTomorrowMaxTemp(res.data.forecast.forecastday[1].day.maxtemp_c);
         setTodayMinTemp(res.data.forecast.forecastday[0].day.mintemp_c);
         setTomorrowMinTemp(res.data.forecast.forecastday[1].day.mintemp_c);
+        setAirQuality(res.data.current.air_quality["gb-defra-index"]);
       })
       .catch((err) => {
         setSearchImg(false);
@@ -87,6 +92,10 @@ function Main() {
 
   const handleErrorClick = () => {
     setErrorImg(false);
+    setSearchImg(true);
+  };
+
+  const handleHomeClick = () => {
     setSearchImg(true);
   };
 
@@ -106,7 +115,6 @@ function Main() {
             isDay={isDay}
           />
           <SecondBox wind={wind} humidity={humidity} visibility={visibility} />
-
           <FourthBox
             todayRainChance={todayRainChance}
             tomorrowRainChance={tomorrowRainChance}
@@ -115,8 +123,29 @@ function Main() {
             todayMinTemp={todayMinTemp}
             tomorrowMinTemp={tomorrowMinTemp}
           />
-          <button id="forecast">5-day forecast</button>
+          {/*<button id="forecast">5-day forecast</button>*/}
           <ThirdBox sunrise={sunrise} sunset={sunset} />
+          <FifthBox airQuality={airQuality} />
+          <HiHome className="Home" onClick={handleHomeClick} />
+          <div id="footer">
+            <p className="footer-text">
+              Coded By <span id="name">Tarun</span>
+            </p>
+            <div id="social-media">
+              <a
+                href="https://www.instagram.com/ohitztarun/"
+                className="social"
+              >
+                <FiInstagram />
+              </a>
+              <a href="https://github.com/tarun2506" className="social">
+                <FiGithub />
+              </a>
+              <a href="https://twitter.com/Tarun44618934" className="social">
+                <FiTwitter />
+              </a>
+            </div>
+          </div>
         </div>
       ) : (
         console.log("rip error")
