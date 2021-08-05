@@ -99,6 +99,16 @@ function Main() {
     setSearchImg(true);
   };
 
+  const handleInputClick = () => {
+    const inp = document.getElementById("first-location-input");
+    inp.setAttribute("placeholder", "");
+    let cont = document.getElementById("first-page");
+    cont.addEventListener("click", () => {
+      const inp = document.getElementById("first-location-input");
+      inp.setAttribute("placeholder", "Enter Location");
+    });
+  };
+
   return (
     <div id="container">
       {!showLoader && !searchImg && !errorImg ? (
@@ -198,6 +208,7 @@ function Main() {
               id="first-location-input"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
+              onClick={handleInputClick}
               placeholder="Enter location"
               autoComplete="off"
             />
