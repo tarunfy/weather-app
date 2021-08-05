@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/fourthbox.css";
 import { IoMdRainy } from "react-icons/io";
+import { motion } from "framer-motion";
 
 function FourthBox({
   todayRainChance,
@@ -11,7 +12,12 @@ function FourthBox({
   tomorrowMinTemp,
 }) {
   return (
-    <div id="fourth-container">
+    <motion.div
+      animate={{ x: 0, opacity: 1 }}
+      initial={{ x: "100vw", opacity: 0 }}
+      transition={{ delay: 4 }}
+      id="fourth-container"
+    >
       <div className="day">
         <p>Today</p>
         <br />
@@ -42,7 +48,7 @@ function FourthBox({
           {`${tomorrowRainChance}%`}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

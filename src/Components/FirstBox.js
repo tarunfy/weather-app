@@ -1,9 +1,15 @@
 import React from "react";
 import "../Styles/firstBox.css";
 import bg from "../images/bg-img.png";
+import { motion } from "framer-motion";
 function FirstBox({ weatherIcon, weatherText, feelsLike, temp, isDay }) {
   return (
-    <div id="weather-container">
+    <motion.div
+      animate={{ x: 0, opacity: 1 }}
+      initial={{ x: "100vw", opacity: 0 }}
+      transition={{ delay: 2 }}
+      id="weather-container"
+    >
       <img src={bg} alt="bg" className="bg-img" />
       <div className="weather-image">
         <img src={weatherIcon} alt="weather-icon" />
@@ -16,7 +22,7 @@ function FirstBox({ weatherIcon, weatherText, feelsLike, temp, isDay }) {
         <h1>{`${temp}°`}</h1>
         <p>Feels Like {`${feelsLike}°`}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -12,7 +12,7 @@ import FourthBox from "./FourthBox";
 import FifthBox from "./FifthBox";
 import { HiHome } from "react-icons/hi";
 import { FiInstagram, FiTwitter, FiGithub } from "react-icons/fi";
-import { ImGithub } from "react-icons/im";
+import { motion } from "framer-motion";
 
 function Main() {
   const APIkey = "b37cfd76d9484e06bc9170453210108";
@@ -102,10 +102,32 @@ function Main() {
   return (
     <div id="container">
       {!showLoader && !searchImg && !errorImg ? (
-        <div id="content">
+        <motion.div
+          initial={{ x: "100vw", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.2,
+            type: "spring",
+            mass: 1,
+            damping: 5,
+            stiffness: 120,
+          }}
+          id="content"
+        >
           <div id="location-name-container">
-            <h3 id="location-name">{`${locationName},`}</h3>
-            <span id="location-name-country">{`${locationNameCountry}`}</span>
+            <motion.h3
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 1 }}
+              id="location-name"
+            >{`${locationName},`}</motion.h3>
+            <motion.span
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 1 }}
+              id="location-name-country"
+            >{`${locationNameCountry}`}</motion.span>
           </div>
           <FirstBox
             weatherIcon={weatherIcon}
@@ -126,8 +148,14 @@ function Main() {
           {/*<button id="forecast">5-day forecast</button>*/}
           <ThirdBox sunrise={sunrise} sunset={sunset} />
           <FifthBox airQuality={airQuality} />
+
           <HiHome className="Home" onClick={handleHomeClick} />
-          <div id="footer">
+          <motion.div
+            animate={{ scale: 1, opacity: 1 }}
+            initial={{ scale: 4, opacity: 0 }}
+            transition={{ delay: 5.7 }}
+            id="footer"
+          >
             <p className="footer-text">
               Coded By <span id="name">Tarun</span>
             </p>
@@ -145,8 +173,8 @@ function Main() {
                 <FiTwitter />
               </a>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       ) : (
         console.log("rip error")
       )}
@@ -156,9 +184,16 @@ function Main() {
         </div>
       )}
       {searchImg && (
-        <div id="first-page">
+        <motion.div
+          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0 }}
+          id="first-page"
+        >
           <div className="searcher">
-            <input
+            <motion.input
+              animate={{ y: 0, opacity: 1 }}
+              initial={{ y: "-100vh", opacity: 0 }}
+              transition={{ delay: 1 }}
               type="text"
               id="first-location-input"
               value={location}
@@ -167,27 +202,65 @@ function Main() {
               autoComplete="off"
             />
 
-            <button
+            <motion.button
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{
+                delay: 1.3,
+                duration: 0.5,
+                type: "easeIn",
+              }}
               id="first-get-btn"
               className="btn"
               onClick={StarterhandleDataReq}
             >
               <FiSearch />
-            </button>
+            </motion.button>
           </div>
-          <div className="first-logo">
+          <motion.div
+            drag
+            dragTransition={{
+              min: 0,
+              max: 10,
+              bounceDamping: 5,
+              bounceStiffness: 200,
+            }}
+            className="first-logo"
+          >
             <SVG2 className="location-svg" />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
       {errorImg && (
-        <div id="error-page">
-          <SVG3 className="error-svg" />
+        <motion.div
+          animate={{ y: 0, opacity: 1 }}
+          initial={{ y: "100vh", opacity: 0 }}
+          transition={{
+            delay: 0.5,
+            type: "spring",
+            mass: 1,
+            damping: 5,
+            stiffness: 90,
+          }}
+          id="error-page"
+        >
+          <motion.div
+            drag
+            dragTransition={{
+              min: 0,
+              max: 10,
+              bounceDamping: 5,
+              bounceStiffness: 200,
+            }}
+            className="img"
+          >
+            <SVG3 className="error-svg" />
+          </motion.div>
           <p className="error-mssg">Oops! Something went wrong</p>
           <button className="error-btn" onClick={handleErrorClick}>
             Go Home
           </button>
-        </div>
+        </motion.div>
       )}
     </div>
   );
